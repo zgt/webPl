@@ -18,7 +18,13 @@
 
     <header>
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Project name to be determined</a>
+        <a class="navbar-brand" href="index.html">
+          <span style='color: red'>K</span>
+          <span style='color: orange'>U</span>
+          <span style='color: yellow'>L</span>
+          <span style='color: limegreen'>A</span>
+          <span style='color: deepskyblue'>Y</span>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,15 +47,38 @@
       </nav>
     </header>
 
+  <form action="login.html" onsubmit="return (checkLogin())">
     <div class= "container" style="text-align:center">
       <label for="username"><b>Username</b></label>
       <br/>
-      <input type="text" placeholder="Enter Username" name="username" autofocus required>
+      <input type="text" placeholder="Enter Username" id="username" autofocus required/>
+      <div id="usernameError" class="error"></div>
       <br/>
       <label for="password"><b>Password</b></label>
       <br/>
-      <input type="text" placeholder="Enter Password" name="password" required>
+      <input type="password" placeholder="Enter Password" id="password" required/>
       <br/>
-      <button type="login">Login</button>
+      <input type="submit" value = "login"/>
       </div>
+    </form>
+
+    <script type="text/javascript">
+        function usernameLength() {
+          var uName = document.getElementById("usernameError")
+          if(this.value.length < 4){
+            uName.textContent = "Username must be at least four characters"
+          }
+          else{
+            uName.textContent = ""
+          }
+        }
+        var egg = document.getElementById("username");
+        egg.addEventListener('blur', usernameLength, false);
+
+        function checkLogin(){
+          alert("egg")
+
+        }
+    </script>
   </body>
+</html>
