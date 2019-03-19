@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/gallery.css">
 </head>
-<body class="light">
+<body class="light"> <!-- body is default the light class, matching up with the other pages but a night mode is not implemented on the gallery page yet-->
 <header>
       <nav class="navbar navbar-expand-lg  navbar-dark">
         <a class="navbar-brand" href="index.html">
@@ -21,6 +21,7 @@
           <span style='color: limegreen'>A</span>
           <span style='color: deepskyblue'>Y</span>
         </a>
+         <!--Collapsible navbar used to condense the navbar when using smaller screen sizes-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,7 +41,7 @@
       </nav>
     </header>
 
-<div class="container">
+
 <div class="grid">
   <img id="img1" img src="images/before1.png" alt="Not Cash Money" onclick="expandDong('img1')">
   <img id="img3" src="images/juanita.jpg" alt="Not Cash Money" onclick="expandDong('img3')">
@@ -74,7 +75,7 @@
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
-</div>
+
 
 
 <script type="text/javascript">
