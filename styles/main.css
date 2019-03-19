@@ -1,0 +1,43 @@
+.container{
+  padding-top: 30px;
+}
+body.dark{
+  background-color: #37474f;
+  color: #fff;
+}
+
+body.dark input{
+  background-color: #102027;
+  color: #fff;
+}
+
+body.dark nav{
+  background-color: #102027;
+}
+
+body.light {
+  background-color: #fff;
+  color: #000;
+}
+
+body.light input{
+  background-color: #37474f;
+  color: #fff;
+}
+
+body.light nav{
+  background-color: #37474f;
+}
+
+body.rainbow{
+  background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+}
+
+body.rainbow input{
+  background-color: #37474f;
+  color: #fff;
+}
+
+body.rainbow nav{
+  background-color: #37474f;
+}
