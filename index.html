@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="author" content = "Matt and Hill">
+    <meta name="author" content = "Matt (mjc5gh) and Hill (ehd3kh)">
     <meta name="description" content = "paint by numbers">
 
     <title>Kulay</title>
@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
+  <--Initial body class is light-->
   <body id="body" class="light">
-
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark" id="barboy">
+        <--Fun easter egg changes background to rainbo mode if you click the logo on main page-->
         <a class="navbar-brand" href="#" onclick='rainboMode()'>
           <span style='color: red'>K</span>
           <span style='color: orange'>U</span>
@@ -26,6 +27,7 @@
           <span style='color: limegreen'>A</span>
           <span style='color: deepskyblue'>Y</span>
         </a>
+        <--Navbar elements collapse into a single button if the page is sufficiently downscaled-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,6 +47,7 @@
       </nav>
     </header>
 
+    <--Columnize example images-->
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -75,6 +78,7 @@
     </div>
 
     <script type="text/javascript">
+      //Nightmode function for the nightmode button
       function nightMode(){
         var body = document.getElementById("body")
         var theme = body.className
@@ -82,6 +86,7 @@
         var nightBut = document.getElementById("night-mode")
         nightBut.value = theme == "dark" ? "Night Mode" : "Day Mode"
       }
+      //Rainbow function toggled when KULAY logo is clicked
       function rainboMode(){
         var body = document.getElementById("body")
         var theme = body.className

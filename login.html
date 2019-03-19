@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="author" content = "Matt and Hill">
+    <meta name="author" content = "Matt (mjc5gh) and Hill (ehd3kh)">
     <meta name="description" content = "paint by numbers">
 
     <title>Kulay</title>
@@ -18,7 +18,7 @@
   </head>
 
   <body class ="light">
-
+    <--General navbar-->
     <header>
       <nav class="navbar navbar-expand-lg  navbar-dark">
         <a class="navbar-brand" href="index.html">
@@ -47,6 +47,7 @@
       </nav>
     </header>
 
+  <--Form for login-->
   <form action="login.html" onsubmit="return (checkLogin())">
     <div class= "container" style="text-align:center">
       <label for="username"><b>Username</b></label>
@@ -63,6 +64,7 @@
     </form>
 
     <script type="text/javascript">
+      //JS function that uses an eventListner to alert the user if the entered username is less than 4 characters
         function usernameLength() {
           var uName = document.getElementById("usernameError")
           if(this.value.length < 4){
