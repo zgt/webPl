@@ -61,3 +61,7 @@ div.desc {
   font-weight: bold;
   transition: 0.3s;
 }
+
+body.light nav{
+  background-color: #37474f;
+}
