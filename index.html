@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
 
-  <--Initial body class is light-->
+  <!--Initial body class is light-->
   <body id="body" class="light">
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark" id="barboy">
-        <--Fun easter egg changes background to rainbo mode if you click the logo on main page-->
+        <!--Fun easter egg changes background to rainbo mode if you click the logo on main page-->
         <a class="navbar-brand" href="#" onclick='rainboMode()'>
           <span style='color: red'>K</span>
           <span style='color: orange'>U</span>
@@ -27,7 +27,7 @@
           <span style='color: limegreen'>A</span>
           <span style='color: deepskyblue'>Y</span>
         </a>
-        <--Navbar elements collapse into a single button if the page is sufficiently downscaled-->
+        <!--Navbar elements collapse into a single button if the page is sufficiently downscaled-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,7 +47,7 @@
       </nav>
     </header>
 
-    <--Columnize example images-->
+    <!--Columnize example images-->
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -82,9 +82,19 @@
       function nightMode(){
         var body = document.getElementById("body")
         var theme = body.className
-        body.className = theme == "dark" ? "light" : "dark"
+        var newClass = body.className  == "dark" ? "light" : "dark"
+        body.className = newClass
         var nightBut = document.getElementById("night-mode")
         nightBut.value = theme == "dark" ? "Night Mode" : "Day Mode"
+        document.cookie = 'theme=' + (newClass == 'light' ? 'light-mode' : 'dark-mode')
+      }
+      function isDark(){
+        return document.cookie.match(/theme=dark-mode/i) != null
+      }
+      function persistentTheme(){
+        var body = document.getElementById("body")
+        body.className = isDark() ? 'dark' : 'light'
+        console.log(document.cookie)
       }
       //Rainbow function toggled when KULAY logo is clicked
       function rainboMode(){
@@ -92,6 +102,9 @@
         var theme = body.className
         body.className = theme == "rainbow" ? "light" : "rainbow"
       }
+      (function() {
+        persistentTheme()
+      })();
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
