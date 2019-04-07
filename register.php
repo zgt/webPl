@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          .error {font-weight: bold;color: red}
       </style>
    </head>
-   <body class ="light">
+   <body class ="light" id="body">
       <!--General navbar-->
       <header>
          <nav class="navbar navbar-expand-lg  navbar-dark">
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                      <a class="nav-link" href="gallery.html">Gallery</a>
                   </li>
                   <li class="nav-item active">
-                     <a class="nav-link" href="#">Account</a>
+                     <a class="nav-link" href="account.php">Account</a>
                   </li>
                </ul>
             </div>
@@ -124,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="password"><b>Password</b></label>
             <br/>
             <input type="password" name="password"  value="<?php echo $password; ?>">
+            <br/>
             <span id="passwordError" class="error"><?php echo $password_err; ?></span>
             <br/>
             <label for="confirm_pass"><b>Confirm Password</b></label>
@@ -131,6 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" name="confirm_pass"  value="<?php echo $confirm_pass; ?>">
             <br/>
             <span id="confirmPasswordError" class="error"><?php echo $confirm_pass_err; ?></span>
+            <br/>
             <input type="submit" value = "Submit" style = "margin-top: 20px"/>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
          </div>

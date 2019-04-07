@@ -86,7 +86,7 @@
           .error {font-weight: bold;color: red}
        </style>
     </head>
-    <body class ="light">
+    <body class ="light" id="body">
        <!--General navbar-->
        <header>
           <nav class="navbar navbar-expand-lg  navbar-dark">
@@ -109,7 +109,7 @@
                       <a class="nav-link" href="gallery.html">Gallery</a>
                    </li>
                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Account</a>
+                      <a class="nav-link" href="account.php">Account</a>
                    </li>
                 </ul>
              </div>
@@ -120,7 +120,8 @@
           <div class= "container" style="text-align:center">
              <label for="username"><b>Username</b></label>
              <br/>
-             <input type="text" placeholder="Enter Username" value="<?php echo $username; ?>" name="username" autofocus required/>
+             <input type="text" placeholder="Enter Username" value="<?php echo $username; ?>" name="username" id="username" autofocus required/>
+             <br/>
              <span id="usernameError" class="error"><?php echo $username_err; ?></span>
              <br/>
              <label for="password"><b>Password</b></label>
@@ -168,12 +169,8 @@
          function persistentTheme(){
            var body = document.getElementById("body")
            body.className = isDark() ? 'dark' : 'light'
-         }
-         //Rainbow function toggled when KULAY logo is clicked
-         function rainboMode(){
-           var body = document.getElementById("body")
-           var theme = body.className
-           body.className = theme == "rainbow" ? "light" : "rainbow"
+           console.log(document.cookie)
+           console.log(body.className)
          }
          (function() {
            persistentTheme()

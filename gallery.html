@@ -34,7 +34,7 @@
                      <a class="nav-link" href="#">Gallery</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="login.html">Account</a>
+                     <a class="nav-link" href="account.php">Account</a>
                   </li>
                </ul>
             </div>
@@ -111,12 +111,6 @@
           body.className = isDark() ? 'dark' : 'light'
           console.log(document.cookie)
           console.log(body.className)
-        }
-        //Rainbow function toggled when KULAY logo is clicked
-        function rainboMode(){
-          var body = document.getElementById("body")
-          var theme = body.className
-          body.className = theme == "rainbow" ? "light" : "rainbow"
         }
         (function() {
           persistentTheme()
