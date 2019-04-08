@@ -25,9 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 echo "Error occured, please try again";
             }
+          $stmt->close();
         }
-
-        $stmt->close();
     }
 
     if (empty(trim($_POST["password"]))) {
