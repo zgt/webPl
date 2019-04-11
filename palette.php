@@ -17,7 +17,7 @@
 
 	        if ($operation_callback == 'contrast') {
 	            $average_luminance = $this->getAverageLuminance($image);
-	        } 
+	        }
 	        else {
 	            $average_luminance = false;
 	        }
@@ -76,10 +76,69 @@
 	    }
 	}
 ?>
+<?php
+  session_start();
+  require_once "config.php";
+  $msg = "";
+
+  if(isset($_POST['submit'])){
+
+    $image = $_FILES['photoUpload']['name'];
+    $target = "uploads/".basename($image);
+    $color1 = hexdec("0x" . $_POST['color1']);
+    $color2 = hexdec("0x" . $_POST['color2']);
+    $color3 = hexdec("0x" . $_POST['color3']);
+    $color4 = hexdec("0x" . $_POST['color4']);
+
+    //$target = "images/".basename($image);
+    $id = $_SESSION["id"];
+    $sql= "INSERT INTO images (image, userid) VALUES ('$image', '$id')";
+
+    mysqli_query($mysqli, $sql);
+
+    $newid = mysqli_query($mysqli, "SELECT MAX(id) FROM images2");
+
+    $newid2 = $newid->fetch_row()[0] + 1;
+    $newImagePath = $newid2 . $image;
+
+    $sql2 ="INSERT INTO images2 (id, image, userid) VALUES ('$newid2', '$newImagePath', '$id')";
+    mysqli_query($mysqli, $sql2);
+
+    if(move_uploaded_file($_FILES['photoUpload']['tmp_name'], $target)){
+      $msg = "image uploaded";
+    }
+    else{
+      $msg = "failed to upload";
+    }
+    //echo $msg;
+
+
+  }
+  $result = mysqli_query($mysqli, "SELECT * FROM images")
+
+ ?>
+ <?php
+  //  while ($row = mysqli_fetch_array($result)) {
+    //  echo "<div id='img_div'>";
+      //	echo "<img src='uploads/".$row['image']."' >";
+    //  echo "</div>";
+    //}
+  ?>
 
 <?php
-$color_array = array(0x000000, 0x8219e3, 0xAAAA03, 0x3a4b3f, 0xFFFFFF);
+$color_array = array($color1, $color2, $color3, $color4);
 $po = new Image_PixelOperations();
-$po->pixelOperation('images/juanita.jpg', 'images/new_juanita.jpg', array($po, 'palletify'), $color_array);
-echo '<img src="images/juanita.jpg"/><img src="images/new_juanita.jpg"/>';
+$newPath = "modified/".$newImagePath;
+$po->pixelOperation($target, $newPath, array($po, 'palletify'), $color_array);
 ?>
+<html>
+<head>
+  <title>Uploaded</title>
+</head>
+<body>
+  <div id="container">
+    <img src="<?php echo $target; ?>">
+    <img src="<?php echo $newPath; ?>">
+  </div>
+</body>
+</html>

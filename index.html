@@ -68,10 +68,20 @@
         </div>
       </div>
     </div>
-
-    <div class="container" style="text-align:center">
-      <input type="button" class="btn btn-dark" id="add" value="Upload Image" onclick='(()=>{ alert("Not Implemented");})();'/>
+    <form action="palette.php" method="POST" enctype="multipart/form-data">
+      <div class="container" style="text-align:center">
+        Color 1: <input class="jscolor" name= "color1" value="ab2567">
+        Color 2: <input class="jscolor" name= "color2" value="2520AB">
+        Color 3: <input class="jscolor" name= "color3" value="25AB41">
+        Color 4: <input class="jscolor" name= "color4" value="D6DC41">
+      </div>
+      <div class="container" style="text-align:center">
+        <input type="file" name="photoUpload" id="photoUpload">
+      </div>
+        <div class="container" style="text-align:center">
+        <input type="submit" class="btn btn-dark" name="submit" value="Upload Image"/>
     </div>
+  </form>
 
     <div class="container" style="text-align:center">
       <input type="button" class="btn btn-dark" id="night-mode" value="Night Mode" onclick='nightMode()'/>
@@ -108,4 +118,5 @@
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="scripts/jscolor.js"></script>
   </body>
