@@ -41,3 +41,8 @@ body.rainbow input{
 body.rainbow nav{
   background-color: #37474f;
 }
+
+.colorBox{
+  width:100px;
+  height:100px;
+}

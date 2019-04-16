@@ -8,9 +8,14 @@
 	}
 	class Image_PixelOperations {
 
+
 	    function pixelOperation($input_image, $output_image, $operation_callback, $color_array = false)
 	    {
+				ini_set("gd.jpeg_ignore_warning", 1);
 	        $image = imagecreatefromjpeg($input_image);
+					if(!$image){
+						$image= imagecreatefromstring(file_get_contents($input_image));
+					}
 	        $x_dimension = imagesx($image);
 	        $y_dimension = imagesy($image);
 	        $new_image = imagecreatetruecolor($x_dimension, $y_dimension);
@@ -90,7 +95,6 @@
     $color3 = hexdec("0x" . $_POST['color3']);
     $color4 = hexdec("0x" . $_POST['color4']);
 
-    //$target = "images/".basename($image);
     $id = $_SESSION["id"];
     $sql= "INSERT INTO images (image, userid) VALUES ('$image', '$id')";
 
@@ -110,7 +114,6 @@
     else{
       $msg = "failed to upload";
     }
-    //echo $msg;
 
 
   }
@@ -132,13 +135,14 @@ $newPath = "modified/".$newImagePath;
 $po->pixelOperation($target, $newPath, array($po, 'palletify'), $color_array);
 ?>
 <html>
-<head>
-  <title>Uploaded</title>
-</head>
-<body>
-  <div id="container">
-    <img src="<?php echo $target; ?>">
-    <img src="<?php echo $newPath; ?>">
-  </div>
+<body onload="document.forms['photos'].submit()">
+  <form action = "result.php" method ="GET" name="photos">
+		<input type="hidden" name="oldpath" value="<?php echo $image; ?>"/>
+		<input type="hidden" name="newpath" value="<?php echo $newImagePath; ?>"/>
+		<input type="hidden" name="c1" value ="<?php echo $_POST['color1']; ?>"/>
+		<input type="hidden" name="c2" value ="<?php echo $_POST['color2']; ?>"/>
+		<input type="hidden" name="c3" value ="<?php echo $_POST['color3']; ?>"/>
+		<input type="hidden" name="c4" value ="<?php echo $_POST['color4']; ?>"/>
+		<input type="submit" value="click"/>
 </body>
 </html>
